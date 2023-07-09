@@ -2,7 +2,7 @@ name: Open URL
 
 on:
   schedule:
-    - cron: '27 8 * * *' # At 04:15 AM UTC
+    - cron: '50 8 * * *' # At 04:15 AM UTC
 
 jobs:
   open-url:
