@@ -1,0 +1,13 @@
+name: Open URL
+
+on:
+  schedule:
+    - cron: '27 8 * * *' # At 04:15 AM UTC
+
+jobs:
+  open-url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open URL
+        run: |
+          curl https://mail-zj2b.onrender.com/send_mail
