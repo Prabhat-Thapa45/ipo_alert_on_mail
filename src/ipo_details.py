@@ -19,3 +19,11 @@ class Ipo:
     def get_data_from_web(self):
         res = requests.get(self.url, headers={"X-Requested-With": "XMLHttpRequest"}).text
         return json.loads(res)['data']
+
+    @staticmethod
+    def get_ipos_opened_today(data):
+        ipos = []
+        for item in data:
+            if item['opening_date'] == str(date.today()):
+                ipos.append(item)
+        return ipos
