@@ -1,6 +1,5 @@
-import nepali_datetime
-from flask import Flask, render_template, request, redirect, url_for
-from src.ipo_api import Ipo
+from flask import Flask
+from src.ipo_details import Ipo
 
 
 app = Flask(__name__)
