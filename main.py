@@ -6,20 +6,16 @@ from src.ipo_api import Ipo
 app = Flask(__name__)
 ipo = Ipo()
 
-
-@app.route('/', methods=['GET'])
-def index():
-    # if request.method == 'POST':
-    #     return redirect(url_for('index'), )
-    try:
-        ipo.reformat_opening_date()
-        return render_template(
-            "ipo.html",
-            ipos=ipo.data,
-            date_today=nepali_datetime.datetime.today().strftime('%y-%B-%d')
-        )
-    except Exception as e:
-        return f"{e} occured"
+# @app.route('/', methods=['GET'])
+# def index():
+#     try:
+#         return render_template(
+#             "ipo.html",
+#             ipos=ipo.data,
+#             date_today=nepali_datetime.datetime.today().strftime('%y-%B-%d')
+#         )
+#     except Exception as e:
+#         return f"{e} occured"
 
 
 @app.route('/send_mail')
