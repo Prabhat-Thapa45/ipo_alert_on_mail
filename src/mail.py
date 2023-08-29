@@ -28,10 +28,7 @@ def send_mail(sender, password, receivers, subject, body):
     server.quit()
 
 
-# def welcome_mail(receivers):
-#     ...
-#
-#
+
 def gmail_login(sender, password):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
