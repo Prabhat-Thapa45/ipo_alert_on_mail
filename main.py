@@ -19,8 +19,8 @@ ipo = Ipo()
 
 @app.route('/send_mail')
 def send_mail():
-    ipo.call_send_mail()
-    return ""
+    ipo.handler()
+    return "hello"
 
 
 if __name__ == "__main__":
