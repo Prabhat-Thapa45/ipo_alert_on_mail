@@ -27,3 +27,17 @@ class Ipo:
             if item['opening_date'] == str(date.today()):
                 ipos.append(item)
         return ipos
+
+    @staticmethod
+    def search_company_details(s: str) -> str:
+        return re.search('>(.*)<', s).group(1)
+
+    def handler(self):
+        data = self.get_data_from_web()
+        ipos = self.get_ipos_opened_today(data)
+        for ipo in ipos:
+            company = ipo['company']
+            company_symbol = self.search_company_details(company['symbol'])
+            company_name = self.search_company_details(company['companyname'])
+            closing_date = ipo['closing_date']
+            compose_mail_message(self.sender_email, self.password, self.receivers_mail, company_symbol, company_name, closing_date)
