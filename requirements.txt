@@ -1,0 +1,4 @@
+backoff==2.2.1
+Flask==2.2.4
+python-dotenv==1.0.0
+Requests==2.31.0
