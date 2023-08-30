@@ -1,5 +1,7 @@
 import re
 from datetime import date
+from json import JSONDecodeError
+import backoff
 import dotenv as denv
 import os
 import requests
@@ -16,8 +18,10 @@ class Ipo:
         self.password = os.getenv('PASSWORD')
         self.receivers_mail = os.getenv('RECEIVERS')
 
+
+    @backoff.on_exception(backoff.expo, (requests.exceptions.RequestException, JSONDecodeError), max_tries=6)
     def get_data_from_web(self):
-        res = requests.get(self.url, headers={"X-Requested-With": "XMLHttpRequest"}).text
+        res = requests.get(self.url, timeout=60, headers={"X-Requested-With": "XMLHttpRequest"}).text
         return json.loads(res)['data']
 
     @staticmethod
