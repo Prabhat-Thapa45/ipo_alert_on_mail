@@ -19,9 +19,9 @@ class Ipo:
         self.receivers_mail = os.getenv('RECEIVERS')
 
 
-    @backoff.on_exception(backoff.expo, (requests.exceptions.RequestException, JSONDecodeError), max_tries=6)
+    @backoff.on_exception(backoff.expo, (requests.exceptions.RequestException, JSONDecodeError), max_tries=3)
     def get_data_from_web(self):
-        res = requests.get(self.url, timeout=60, headers={"X-Requested-With": "XMLHttpRequest"}).text
+        res = requests.get(self.url, timeout=60*30, headers={"X-Requested-With": "XMLHttpRequest"}).text
         return json.loads(res)['data']
 
     @staticmethod
