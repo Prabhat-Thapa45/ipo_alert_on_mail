@@ -37,7 +37,10 @@ class Ipo:
         return re.search('>(.*)<', s).group(1)
 
     def handler(self):
-        data = self.get_data_from_web()
+        try:
+            data = self.get_data_from_web()
+        except JSONDecodeError:
+            return "Unable to get data"
         ipos = self.get_ipos_opened_today(data)
         for ipo in ipos:
             company = ipo['company']
