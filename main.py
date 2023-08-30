@@ -16,6 +16,10 @@ ipo = Ipo()
 #     except Exception as e:
 #         return f"{e} occured"
 
+@app.route('/', methods=['GET'])
+def index():
+    return "welcome to ipo alerts"
+
 
 @app.route('/send_mail')
 def send_mail():
