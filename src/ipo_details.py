@@ -42,7 +42,7 @@ class Ipo:
             data = self.get_data_from_web()
             logging.info("[2] Successfully retrieved data from web")
         except JSONDecodeError:
-            logging.info("[2] Failed to get data from web")
+            logging.info("[2] Failed to get data from web 'JSONDecodeError'")
             return "Unable to get data"
         ipos = self.get_ipos_opened_today(data)
         for ipo in ipos:

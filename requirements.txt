@@ -1,8 +1,0 @@
-backoff==2.2.1
-Flask==2.2.4
-python-dotenv==0.10.5
-Requests==2.31.0
-gunicorn==20.1.0
-beautifulsoup4==4.9.3
-lxml==4.9.3
-
