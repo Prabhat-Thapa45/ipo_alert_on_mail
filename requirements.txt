@@ -28,4 +28,4 @@ python-Levenshtein==0.12.2
 requests==2.31.0
 urllib3==1.25.11
 webencodings==0.5.1
-Werkzeug==2.3.6
+Werkzeug==2.2.3
