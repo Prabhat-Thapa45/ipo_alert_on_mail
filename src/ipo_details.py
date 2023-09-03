@@ -51,5 +51,5 @@ class Ipo:
             company_name = self.search_company_details(company['companyname'])
             closing_date = ipo['closing_date']
             compose_mail_message(self.sender_email, self.password, self.receivers_mail, company_symbol, company_name, closing_date)
-        logging.info("[4] No Ipos for today")
+        logging.info("[3] No Ipos for today")
         return "We don't have any IPO opening today"

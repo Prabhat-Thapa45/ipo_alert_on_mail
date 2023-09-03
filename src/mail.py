@@ -13,13 +13,13 @@ def compose_mail_message(sender_email, password, receivers_mail, symbol, name, c
            f"आज {symbol} कम्पनीको आईपीओ(IPO) खुलेको छ। यस कम्पनीको आईपीओ " \
            f"{str(datetime.date.today())} बाट {closing_date} " \
            f"सम्म खुला रहनेछ। \n\nहार्दिक शुभकामना\nप्रभात थापा\nIPO alerts परिवार"
-    logging.info('[3] Message has been composed')
+    logging.info('[4] Message has been composed')
     send_mail(sender_email, password, receivers_mail, subject, body)
 
 
 def send_mail(sender, password, receivers, subject, body):
     server = gmail_login(sender, password)
-    logging.info("[4] Successfully logged into gmail server")
+    logging.info("[5] Successfully logged into gmail server")
 
     for receiver in receivers.split(','):
         try:
@@ -31,9 +31,9 @@ def send_mail(sender, password, receivers, subject, body):
             server.send_message(msg)
         except Exception as e:
             return f'Error: {e}'
-    logging.info("[5] Message sent to recipient")
-    return "Message sent to recipient"
+    logging.info("[6] Message sent to recipient")
     server.quit()
+    return "Message sent to recipient"
 
 
 def gmail_login(sender, password):

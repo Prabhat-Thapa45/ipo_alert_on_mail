@@ -26,7 +26,7 @@ def index():
 @app.route('/send_mail')
 def send_mail():
     logging.info("[1] Send mail route has been triggered from github action")
-    ipo.handler()
+    return ipo.handler()
 
 
 if __name__ == "__main__":
