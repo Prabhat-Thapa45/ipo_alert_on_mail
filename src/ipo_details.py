@@ -23,7 +23,9 @@ class Ipo:
     @backoff.on_exception(backoff.expo, (requests.exceptions.RequestException, JSONDecodeError), max_tries=9)
     def get_data_from_web(self):
         session = HTMLSession()
-        return session.get(url=self.url, headers={"X-Requested-With": "XMLHttpRequest"}).json()['data']
+        response = session.get(url=self.url, headers={"X-Requested-With": "XMLHttpRequest"})
+        response.html.render()  # Waits for JavaScript to load
+        return response.json()['data']
 
     @staticmethod
     def get_ipos_opened_today(data):
