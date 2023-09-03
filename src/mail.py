@@ -16,6 +16,7 @@ def compose_mail_message(sender_email, password, receivers_mail, symbol, name, c
     logging.info('[3] Message has been composed')
     send_mail(sender_email, password, receivers_mail, subject, body)
 
+
 def send_mail(sender, password, receivers, subject, body):
     server = gmail_login(sender, password)
     logging.info("[4] Successfully logged into gmail server")
@@ -33,7 +34,6 @@ def send_mail(sender, password, receivers, subject, body):
     logging.info("[5] Message sent to recipient")
     return "Message sent to recipient"
     server.quit()
-
 
 
 def gmail_login(sender, password):

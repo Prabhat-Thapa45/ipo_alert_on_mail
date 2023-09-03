@@ -27,7 +27,6 @@ def index():
 def send_mail():
     logging.info("[1] Send mail route has been triggered from github action")
     ipo.handler()
-    return ""
 
 
 if __name__ == "__main__":
