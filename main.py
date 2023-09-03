@@ -1,5 +1,7 @@
 from flask import Flask
 from src.ipo_details import Ipo
+import logging
+logging.basicConfig(level=logging.INFO)
 
 
 app = Flask(__name__)
@@ -23,8 +25,9 @@ def index():
 
 @app.route('/send_mail')
 def send_mail():
+    logging.info("[1] Send mail route has been triggered from github action")
     ipo.handler()
-    return "hello"
+    return ""
 
 
 if __name__ == "__main__":

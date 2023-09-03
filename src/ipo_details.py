@@ -6,7 +6,8 @@ import dotenv as denv
 import os
 import requests
 import json
-
+import logging
+logging.basicConfig(level=logging.INFO)
 from src.mail import compose_mail_message
 
 
@@ -39,7 +40,9 @@ class Ipo:
     def handler(self):
         try:
             data = self.get_data_from_web()
+            logging.info("[2] Successfully retrieved data from web")
         except JSONDecodeError:
+            logging.info("[2] Failed to get data from web")
             return "Unable to get data"
         ipos = self.get_ipos_opened_today(data)
         for ipo in ipos:
@@ -48,3 +51,5 @@ class Ipo:
             company_name = self.search_company_details(company['companyname'])
             closing_date = ipo['closing_date']
             compose_mail_message(self.sender_email, self.password, self.receivers_mail, company_symbol, company_name, closing_date)
+        logging.info("[4] No Ipos for today")
+        return "We don't have any IPO opening today"
