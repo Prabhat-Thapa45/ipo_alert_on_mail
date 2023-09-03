@@ -24,7 +24,7 @@ class Ipo:
     def get_data_from_web(self):
         session = HTMLSession()
         response = session.get(url=self.url, headers={"X-Requested-With": "XMLHttpRequest"})
-        response.html.render()  # Waits for JavaScript to load
+        response.html.render(timeout=2000)  # Waits for JavaScript to load
         return response.json()['data']
 
     @staticmethod
